@@ -1,0 +1,10 @@
+# neovim-bin = "$HOME/.local/bin/lvim"
+title-hidden = true
+# frame = "transparent"
+maximized = true
+no-multigrid = true
+
+[font]
+normal = ["Maple Mono NF CN"]
+size = 10
+

@@ -1,0 +1,135 @@
+{
+  "common_comment": {
+    "prefix": "/**",
+    "body": [
+      "/**",
+      " * ${1:Description}",
+      " * @Author: ${7}",
+      " * ${3:@Param ${4:array} ${5:data} ${6:optional}}",
+      " * @Return ${2:null}",
+      " */"
+    ],
+    "description": "add doc comment"
+  },
+  "common_const": {
+    "prefix": "const",
+    "body": [
+      "const ${3:STATUS}_${1:DEFAULT} = 0;",
+      "public static $${4:status_text} = [",
+      "    self::${3:STATUS}_${1:DEFAULT} => '${2:默认}',",
+      "];"
+    ],
+    "description": "const phrase"
+  },
+  "common_arr_kv_pair": {
+    "prefix": "'kv",
+    "body": [
+      "'${1:key}' => ${2:'value'},"
+    ],
+    "description": "add array key value"
+  },
+  "common_dump_exit": {
+    "prefix": "var",
+    "body": [
+      "var_dump(${1:0});exit;"
+    ],
+    "description": "debug variable and exit"
+  },
+  "think_custom_rwlock": {
+    "prefix": "rwlock",
+    "body": [
+      "$$redis_key = '${1:prefix_}'${2: . $$user_id};",
+      "$$this->rwLock($$redis_key, 5);"
+    ],
+    "description": "read write lock"
+  },
+  "think_try_write_db": {
+    "prefix": "trytrans",
+    "body": [
+      "Db::startTrans();",
+      "try {",
+      "    ${1}",
+      "    Db::commit();",
+      "} catch (\\Exception $e) {",
+      "    Db::rollback();",
+      "    Log::error(\"${2:执行失败}：\" . $e->getMessage());",
+      "    throw new \\Exception(\"${2:执行失败}：\" . $e->getMessage());",
+      "    // E::throw(\"${2:执行失败}：\" . $e->getMessage());",
+      "}"
+    ],
+    "description": "thinkphp try catch with transaction"
+  },
+  "think_print_sql": {
+    "prefix": "varsql",
+    "body": [
+      "var_dump($${1:query}->fetchSql(true)->select());exit;"
+    ],
+    "description": "thinkphp sql debug"
+  },
+  "service_exception": {
+    "prefix": "exceptionclass",
+    "body": [
+      "<?php",
+      "namespace App\\Exceptions;",
+      "",
+      "use Exception;",
+      "use Throwable;",
+      "",
+      "class ServiceException extends Exception",
+      "{",
+      "    const ERROR_DATA_FORMAT = 500100;",
+      "    const ERROR_DATA_NOT_EXISTS = 500101;",
+      "    const ERROR_DATA_NO_AUTH = 500102;",
+      "    public static $$messages = [",
+      "        self::ERROR_DATA_FORMAT => '数据格式不正确',",
+      "        self::ERROR_DATA_NOT_EXISTS => '数据不存在',",
+      "        self::ERROR_DATA_NO_AUTH => '数据无权限',",
+      "    ];",
+      "",
+      "    public function __construct($$message, $$code = 0, Throwable $$previous)",
+      "    {",
+      "        if ($$code > 0 && $$message == '') {",
+      "            $$message = isset(self::$$messages[$$code]) ? self::$$messages[$$code] : 'Service Error';",
+      "        }",
+      "",
+      "        parent::__construct($$message, $$code, $$previous);",
+      "    }",
+      "",
+      "    public function __toString()",
+      "    {",
+      "        return __CLASS__ . \": [{$$this->code}]: {$$this->message}\";",
+      "    }",
+      "}"
+    ]
+  },
+  "service_instance": {
+    "prefix": "serviceinstance",
+    "body": [
+      "/**",
+      " * @var array $$instance 实例对象",
+      " */",
+      "public static $$instance = [];",
+      "",
+      "/**",
+      " * 实例化service对象",
+      " * @return object",
+      " */",
+      "public static function getInstance()",
+      "{",
+      "    $$class = explode('\\\\\\\\', get_called_class());",
+      "    $$service = end($$class);",
+      "",
+      "    if (!isset(static::$$instance[$$service])) {",
+      "        static::$$instance[$$service] = new static();",
+      "    }",
+      "    return static::$$instance[$$service];",
+      "}"
+    ]
+  },
+  "@OA\\JsonContent Ref": {
+    "prefix": "@OA\\JsonContentRef",
+    "body": [
+      "@OA\\JsonContent(ref=\"#/components/schemas/${1:Request}\")"
+    ]
+  }
+}

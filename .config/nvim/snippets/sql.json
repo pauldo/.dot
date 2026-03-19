@@ -1,0 +1,36 @@
+{
+  "create_table": {
+    "prefix": "createtable",
+    "body": [
+      "CREATE TABLE `${1:table}` (",
+      "    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,",
+      "    `created_at` int(11) NOT NULL COMMENT '创建时间',",
+      "    PRIMARY KEY (`id`)",
+      ") ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='${2:remark}'"
+    ]
+  },
+  "column_int": {
+    "prefix": "columnint",
+    "body": [
+      "`${1:field}` int(11) NOT NULL DEFAULT '0' COMMENT '${2:}'"
+    ]
+  },
+  "column_tinyint": {
+    "prefix": "columntinyint",
+    "body": [
+      "`${1:field}` tinyint(1) ${2:unsigned zerofill} NOT NULL DEFAULT '0' COMMENT '${3:是否 0：否 1：是}',"
+    ]
+  },
+  "column_json": {
+    "prefix": "columnjson",
+    "body": [
+      "`${1:field}` json NOT NULL COMMENT '${2:}'"
+    ]
+  },
+  "column_varchar": {
+    "prefix": "columnvarchar",
+    "body": [
+      "`${1:field}` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '${2:}'"
+    ]
+  }
+}

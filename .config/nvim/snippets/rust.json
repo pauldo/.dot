@@ -1,0 +1,14 @@
+{
+  "allowdeadcode": {
+    "prefix": "allowdeadcode",
+    "body": ["#[allow(dead_code)]"]
+  },
+  "allowunusedvar": {
+    "prefix": "allowunusedvar",
+    "body": ["#[allow(unused_variables)]"]
+  },
+  "iterenum": {
+    "prefix": "iterenum",
+    "body": [".iter().enumerate()"]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "prefix": "summary",
+    "body": [
+      "<details>",
+      "<summary><code><strong>${1:title}</strong></code></summary>",
+      "${2:content}",
+      "</details>"
+    ]
+  }
+}
