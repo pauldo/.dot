@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# 获取输入参数
+INPUT=$1
+
+# 如果没有输入参数，直接输出当前时间戳
+if [ -z "$INPUT" ]; then
+    date +%s
+    exit 0
+fi
+
+# 判断操作系统类型 (Linux vs macOS/BSD)
+if date --version >/dev/null 2>&1; then
+    # GNU date (Linux)
+    date -d "$INPUT" +%s 2>/dev/null
+else
+    # BSD date (macOS)
+    # 尝试多种常见的日期格式适配
+    date -j -f "%Y-%m-%d %H:%M:%S" "$INPUT" +%s 2>/dev/null || \
+    date -j -f "%Y%m%d" "$INPUT" +%s 2>/dev/null || \
+    date -j "$INPUT" +%s 2>/dev/null
+fi
+
+# 如果转换失败，输出提示
+if [ $? -ne 0 ]; then
+    echo "Error: 无法识别的时间格式 '$INPUT'"
+    exit 1
+fi

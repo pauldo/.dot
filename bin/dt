@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# 获取输入参数
+INPUT=$1
+
+# 如果没有输入参数，默认转换当前时间戳
+if [ -z "$INPUT" ]; then
+    INPUT=$(date +%s)
+fi
+
+# 检查输入是否为纯数字（基本的时间戳校验）
+if [[ ! "$INPUT" =~ ^[0-9]+$ ]]; then
+    echo "Error: 请输入有效的时间戳数字"
+    exit 1
+fi
+
+# 判断操作系统类型并执行转换
+if date --version >/dev/null 2>&1; then
+    # GNU date (Linux)
+    date -d "@$INPUT" "+%Y-%m-%d %H:%M:%S" 2>/dev/null
+else
+    # BSD date (macOS)
+    date -r "$INPUT" "+%Y-%m-%d %H:%M:%S" 2>/dev/null
+fi
+
+# 如果转换失败
+if [ $? -ne 0 ]; then
+    echo "Error: 无法转换时间戳 '$INPUT'"
+    exit 1
+fi
