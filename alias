@@ -9,5 +9,7 @@ if command -v navi > /dev/null; then
 	alias np='navialias np'
 	alias ncp='navialias ncp'
 	alias tt='navialias tt'
+  alias setproxy='navialias setproxy'
+  alias unsetproxy='navialias unsetproxy'
 	alias n='navi'
 fi

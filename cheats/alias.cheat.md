@@ -1,5 +1,11 @@
 % alias
 
+# :: setproxy
+export HTTPS_PROXY=http://<ip>:<port> HTTP_PROXY=http://<ip>:<port> ALL_PROXY=http://<ip>:<port>
+
+# :: unsetproxy
+unset HTTPS_PROXY HTTP_PROXY ALL_PROXY
+
 # :: tt
 if ! command -v taskwarrior-tui > /dev/null; then
   brew install taskwarrior-tui
@@ -29,3 +35,6 @@ navi --print
 
 # :: ncp
 navi --print | navi --query "alias :: clip" --best-match
+
+$ ip: echo "127.0.0.1|" | tr '|' '\n'
+$ port: echo "7890|" | tr '|' '\n'
