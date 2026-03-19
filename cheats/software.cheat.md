@@ -1,5 +1,15 @@
 % software
 
+# install claude
+if ! command -v claude >/dev/null 2>&1; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# install opencode
+if ! command -v opencode >/dev/null 2>&1; then
+  curl -fsSL https://opencode.ai/install | bash
+fi
+
 # install kiro
 if ! command -v kiro >/dev/null 2>&1; then
   curl -fsSL https://cli.kiro.dev/install | bash

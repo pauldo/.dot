@@ -1,0 +1,69 @@
+theme = "ayu_dark_transparent"
+
+[editor]
+mouse = false
+true-color = true
+cursorline = true
+bufferline = "multiple"
+rulers = [80, 120]
+auto-format = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.smart-tab]
+enable = false
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
+"=" = [
+  "extend_to_line_bounds",
+  "format_selections",
+  "add_newline_below",
+  ":pipe sed -e 's/\t/    /g'",
+]
+"H" = "goto_previous_buffer"
+"L" = "goto_next_buffer"
+
+[keys.normal."ret"]
+w = ":w"
+q = ":q"
+Q = ":qa!"
+c = ":bc"
+C = ":bc!"
+o = ":bco"
+O = ":bco!"
+r = ":rl"
+R = ":rla"
+C-d = "@X\"0y\"0p"
+y = "@\"+y"
+C-c = "@!<C-r>.<ret>"
+C-r = [
+  "wonly",
+  ":set-language sql",
+  ":buffer-close-others!",
+  "extend_to_line_bounds",
+  "yank",
+  ":hsplit-new",
+  "paste_after",
+  ":pipe mysql -u\"${MYSQL_USER:-test}\" \"${MYSQL_DB:-test}\" -e \"$(cat)\"",
+  "rotate_view",
+]
+C-j = [
+  "wonly",
+  ":set-language jsonnet",
+  ":buffer-close-others!",
+  "extend_to_line_bounds",
+  "yank",
+  ":vsplit-new",
+  ":set-language jsonnet",
+  "paste_after",
+  ":pipe myr",
+  "goto_file_start",
+  "rotate_view",
+]
+t = { y = "@!scp <C-r>% ywt:ywt/<C-r>%<ret>", i = "@!scp <C-r>% ink:ink/<C-r>%<ret>", t = "@!scp <C-r>% <C-r>+/<C-r>%" }
+H = { r = ":config-reload", o = ":config-open" }

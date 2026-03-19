@@ -1,0 +1,113 @@
+
+# https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "markdown"
+file-types = ["md", "markdown", "cheat"]
+
+[[language]]
+name = "ini"
+file-types = [
+  "conf",
+
+  # from https://github.com/helix-editor/helix/blob/master/languages.toml
+  "ini",
+  "service",
+  "automount",
+  "device",
+  "mount",
+  "path",
+  "service",
+  "slice",
+  "socket",
+  "swap",
+  "target",
+  "timer",
+  "container",
+  "volume",
+  "kube",
+  "network",
+]
+
+[[language]]
+name = "bash"
+file-types = [
+  "nginx.conf",
+
+  # from https://github.com/helix-editor/helix/blob/master/languages.toml
+  "sh",
+  "bash",
+  "zsh",
+  ".bash_login",
+  ".bash_logout",
+  ".bash_profile",
+  ".bashrc",
+  ".profile",
+  ".zshenv",
+  "zshenv",
+  ".zlogin",
+  "zlogin",
+  ".zlogout",
+  "zlogout",
+  ".zprofile",
+  "zprofile",
+  ".zshrc",
+  "zshrc",
+  ".zimrc",
+  "APKBUILD",
+  "PKGBUILD",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  ".bash_aliases",
+  "Renviron",
+  ".Renviron",
+]
+
+[[language]]
+name = "php"
+file-types = ["php"]
+indent = { tab-width = 4, unit = "    " }
+language-servers = ["intelephense", "tabby"]
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server", "tailwindcss-ls"]
+
+[[language]]
+name = "rest"
+grammar = "jsonc"
+scope = "source.rest"
+injection-regex = "rest"
+file-types = ["rest", "jsonc"]
+comment-tokens = "#"
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "python"
+language-servers = ["ruff"]
+auto-format = true
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+language-servers = ["gopls", "golangci-lint2-langserver"]
+
+[language-server.golangci-lint2-langserver]
+command = "golangci-lint-langserver"
+
+[language-server.golangci-lint2-langserver.config]
+command = [
+  "golangci-lint",
+  "run",
+  "--output.json.path",
+  "stdout",
+  "--show-stats=false",
+  "--issues-exit-code=1",
+]
