@@ -1,0 +1,13 @@
+alias l='ls -al'
+alias sudo='sudo env "PATH=$PATH" '
+if command -v navi > /dev/null; then
+	navialias() {
+	    navi --query "alias :: $1" --best-match
+	}
+	alias clip='navialias clip'
+	alias pasteclip='navialias pasteclip'
+	alias np='navialias np'
+	alias ncp='navialias ncp'
+	alias tt='navialias tt'
+	alias n='navi'
+fi

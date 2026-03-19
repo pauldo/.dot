@@ -1,0 +1,4 @@
+[[ -f $HOME/.dot/alias ]] && source $HOME/.dot/alias
+[[ -f $HOME/.dot/sh ]] && source $HOME/.dot/sh
+[[ -f $HOME/.dot/env ]] && source $HOME/.dot/env
+
