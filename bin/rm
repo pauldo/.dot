@@ -1,0 +1,23 @@
+#!/bin/bash
+
+TRASH_DIR="$HOME/.trash"
+
+if [ ! -d "$TRASH_DIR" ]; then
+  mkdir -p "$TRASH_DIR"
+fi
+
+PREFIX=$(date +%Y%m%d_%H%M%S_)
+
+for item in "$@"; do
+  if [[ "$item" == -* ]]; then
+    continue
+  fi
+
+  if [ -e "$item" ] || [ -L "$item" ]; then
+    basename=$(basename "$item")
+    mv "$item" "$TRASH_DIR/${PREFIX}${basename}"
+    echo "Moved to trash: ${PREFIX}${basename}"
+  else
+    echo "rm: cannot remove '$item': No such file or directory"
+  fi
+done
