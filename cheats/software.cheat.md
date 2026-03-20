@@ -26,9 +26,7 @@ if ! command -v singbox >/dev/null 2>&1; then
 fi
 
 # install ohmyzsh
-if ! command -v zsh >/dev/null 2>&1; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install s-ui
 if ! command -v s-ui >/dev/null 2>&1; then
