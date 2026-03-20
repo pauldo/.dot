@@ -1,3 +1,23 @@
+% run
+
+# githubhost
+curl https://raw.hellogithub.com/hosts
+
+# checkip
+curl https://ipinfo.io/json
+
+# checkweather
+curl https://wttr.in
+
+# checkspeed
+curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+# checkregionrestriction
+bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
+
+# lightpanda
+lightpanda fetch --obey_robots --log_format pretty --log_level info https://
+
 % install
 
 # claude
@@ -27,20 +47,5 @@ command -v chsrc >/dev/null 2>&1 || curl https://chsrc.run/posix | bash
 # x-cmd
 command -v x-cmd >/dev/null 2>&1 || curl -L https://get.x-cmd.com | bash
 
-% run
-
-# githubhost
-curl https://raw.hellogithub.com/hosts
-
-# checkip
-curl https://ipinfo.io/json
-
-# checkweather
-curl https://wttr.in
-
-# checkspeed
-curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
-
-# checkregionrestriction
-bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
-
+# lightpanda
+curl -L -o $HOME/.dot/bin/lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux && chmod a+x $HOME/.dot/bin/lightpanda
