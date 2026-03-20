@@ -30,6 +30,11 @@ if ! command -v zsh >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# install s-ui
+if ! command -v s-ui >/dev/null 2>&1; then
+  bash <(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)
+fi
+
 # install chsrc
 if ! command -v chsrc >/dev/null 2>&1; then
   curl https://chsrc.run/posix | sudo bash

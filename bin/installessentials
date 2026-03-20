@@ -1,11 +1,27 @@
 #!/bin/bash
 
 installessentials() {
-  echo "Installing essentials..."
+  echo "Checking for Homebrew..."
   if ! command -v brew >/dev/null 2>&1; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    if [[ -f /opt/homebrew/bin/brew ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
   fi
+
+  echo "Updating Homebrew..."
+  brew update
+
   echo "Installing tools..."
-  brew install git neovim fzf wget curl helix lazygit lazysql stow
+  brew install git wget curl fzf ripgrep jq zellij lazygit lazysql navi
+
+  echo "Installing editors..."
+  brew neovim helix
+
+  echo "Installing languages..."
+  brew node python rust php go
 }
+
+installessentials

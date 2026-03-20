@@ -1,0 +1,38 @@
+#!/bin/bash
+
+HOSTS_URL="https://raw.hellogithub.com/hosts"
+TMP_HOSTS="/tmp/github_hosts_new"
+HOSTS_FILE="/etc/hosts"
+
+START_MARK="# GitHub520 Hosts Start"
+END_MARK="# GitHub520 Hosts End"
+
+echo "正在从 HelloGitHub 获取最新数据..."
+
+if ! curl -fsSL "$HOSTS_URL" -o "$TMP_HOSTS"; then
+    echo "错误：无法访问数据源，请检查网络或代理设置。"
+    exit 1
+fi
+
+echo "正在更新 $HOSTS_FILE..."
+
+sudo sed -i "/$START_MARK/,/$END_MARK/d" "$HOSTS_FILE"
+
+{
+    echo "$START_MARK"
+    cat "$TMP_HOSTS"
+    echo -e "\n$END_MARK"
+} | sudo tee -a "$HOSTS_FILE" > /dev/null
+
+rm "$TMP_HOSTS"
+
+echo "正在刷新 DNS 缓存..."
+if command -v dscacheutil >/dev/null; then
+    sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder # macOS
+elif command -v resolvectl >/dev/null; then
+    sudo resolvectl flush-caches # Systemd (Linux)
+elif command -v systemd-resolve >/dev/null; then
+    sudo systemd-resolve --flush-caches
+fi
+
+echo "✅ 更新完成！请尝试访问 github.com"
