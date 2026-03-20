@@ -15,7 +15,7 @@ installessentials() {
   brew update
 
   echo "Installing tools..."
-  brew install git wget curl fzf ripgrep jq zellij lazygit lazysql navi
+  brew install git wget curl fzf ripgrep jq zellij lazygit lazysql navi zsh
 
   echo "Installing editors..."
   brew neovim helix

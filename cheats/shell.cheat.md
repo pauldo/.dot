@@ -1,10 +1,10 @@
-% shell
+% date
 
-# date ymd
-date +%Y%m%d
-
-# date ymdhms
+# ymdhms
 date +%Y%m%d%H%M%S
 
-# date hms
+# ymd
+date +%Y%m%d
+
+# hms
 date +%H%M%S

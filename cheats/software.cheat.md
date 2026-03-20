@@ -1,46 +1,46 @@
-% software
+% install
 
-# install claude
-if ! command -v claude >/dev/null 2>&1; then
-  curl -fsSL https://claude.ai/install.sh | bash
-fi
+# claude
+command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash
 
-# install opencode
-if ! command -v opencode >/dev/null 2>&1; then
-  curl -fsSL https://opencode.ai/install | bash
-fi
+# opencode
+command -v opencode >/dev/null 2>&1 || curl -fsSL https://opencode.ai/install | bash
 
-# install kiro
-if ! command -v kiro >/dev/null 2>&1; then
-  curl -fsSL https://cli.kiro.dev/install | bash
-fi
+# kiro
+command -v kiro >/dev/null 2>&1 || curl -fsSL https://cli.kiro.dev/install | bash
 
-# install zb
-if ! command -v zb >/dev/null 2>&1; then
-  curl -fsSL https://zerobrew.rs/install | bash
-fi
+# zb
+command -v zb >/dev/null 2>&1 || curl -fsSL https://zerobrew.rs/install | bash
 
-# install singbox
-if ! command -v singbox >/dev/null 2>&1; then
-  curl -fsSL https://sing-box.app/install.sh | sh
-fi
+# singbox
+command -v singbox >/dev/null 2>&1 || curl -fsSL https://sing-box.app/install.sh | sh
 
-# install ohmyzsh
+# ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# install s-ui
-if ! command -v s-ui >/dev/null 2>&1; then
-  bash <(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)
-fi
+# s-ui
+command -v s-ui >/dev/null 2>&1 || bash <(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)
 
-# install chsrc
-if ! command -v chsrc >/dev/null 2>&1; then
-  curl https://chsrc.run/posix | sudo bash
-fi
+# chsrc
+command -v chsrc >/dev/null 2>&1 || curl https://chsrc.run/posix | bash
 
-# install x-cmd
-if ! command -v x-cmd >/dev/null 2>&1; then
-  eval "$(curl https://get.x-cmd.com)"
-fi
+# x-cmd
+command -v x-cmd >/dev/null 2>&1 || curl -L https://get.x-cmd.com | bash
 
+% run
+
+# githubhost
+curl https://raw.hellogithub.com/hosts
+
+# checkip
+curl https://ipinfo.io/json
+
+# checkweather
+curl https://wttr.in
+
+# checkspeed
+curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+
+# checkregionrestriction
+bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 
