@@ -15,11 +15,6 @@ if ! command -v kiro >/dev/null 2>&1; then
   curl -fsSL https://cli.kiro.dev/install | bash
 fi
 
-# install brew
-if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
 # install zb
 if ! command -v zb >/dev/null 2>&1; then
   curl -fsSL https://zerobrew.rs/install | bash

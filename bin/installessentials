@@ -1,0 +1,11 @@
+#!/bin/bash
+
+installessentials() {
+  echo "Installing essentials..."
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  echo "Installing tools..."
+  brew install git neovim fzf wget curl helix lazygit lazysql stow
+}
