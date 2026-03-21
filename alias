@@ -11,5 +11,8 @@ if command -v navi > /dev/null; then
   alias tt='navialias tt'
   alias setproxy='navialias setproxy'
   alias unsetproxy='navialias unsetproxy'
+  alias searchlink='navi --query "kvs searchlink" --best-match'
+  alias sl='searchlink'
   alias n='navi'
+  alias n2='navi --query "kvs n2" --best-match'
 fi
