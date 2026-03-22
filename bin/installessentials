@@ -18,10 +18,10 @@ installessentials() {
   brew install git wget curl fzf ripgrep jq zellij lazygit lazysql navi zsh bat htop
 
   echo "Installing editors..."
-  brew neovim helix
+  brew install neovim helix
 
   echo "Installing languages..."
-  brew node python rust php go
+  brew install node python rust php go
 }
 
 installessentials
