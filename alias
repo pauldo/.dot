@@ -1,6 +1,10 @@
 alias l='ls -al'
 alias sudo='sudo env "PATH=$PATH" '
 if command -v navi > /dev/null; then
+  navikv() {
+    export NAVI_KV_SEARCH=$2
+    navi --query "$1" --best-match
+  }
   navialias() {
     navi --query "alias :: $1" --best-match
   }
@@ -11,7 +15,7 @@ if command -v navi > /dev/null; then
   alias tt='navialias tt'
   alias setproxy='navialias setproxy'
   alias unsetproxy='navialias unsetproxy'
-  alias searchlink='navi --query "kvs searchlink" --best-match'
+  alias searchlink='navikv "kvs searchlink"'
   alias sl='searchlink'
   alias n='navi'
   alias n2='navi --query "kvs n2" --best-match'
