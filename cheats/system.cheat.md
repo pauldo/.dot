@@ -1,5 +1,10 @@
 % system
 
+# install old php
+brew tap shivammathur/php
+brew tap shivammathur/extensions
+brew install shivammathur/php/php@7.4
+
 # set timezone
 sudo timedatectl set-timezone Asia/Shanghai
 
