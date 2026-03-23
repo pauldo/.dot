@@ -1,2 +1,6 @@
-^[^.].*
-.git*
+.git
+cheats
+alias
+env
+sh
+bin
