@@ -41,6 +41,7 @@ R = ":rla"
 C-d = "@X\"0y\"0p"
 y = "@\"+y"
 C-c = "@!<C-r>.<ret>"
+n = ":pipe navi --best-match --print --query '%{selection}'"
 C-r = [
   "wonly",
   ":set-language sql",
