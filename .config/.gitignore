@@ -1,4 +1,6 @@
-lazysql
-helix
-neovide
-nvim
+*
+!.gitignore
+!lazysql
+!helix
+!neovide
+!nvim
