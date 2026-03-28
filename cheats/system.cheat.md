@@ -8,6 +8,9 @@ brew install shivammathur/php/php@7.4
 # set timezone
 sudo timedatectl set-timezone Asia/Shanghai
 
+# install helix simple completion lsp
+cargo install --features citation --git https://github.com/estin/simple-completion-language-server.git
+
 ; initialize .zshrc or .bashrc
 # init zsh or bash
 

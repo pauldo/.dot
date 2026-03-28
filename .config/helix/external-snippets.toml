@@ -1,0 +1,14 @@
+
+# [[sources]]
+# name = "friendly-snippets"
+# git = "https://github.com/rafamadriz/friendly-snippets.git"
+
+# [[sources.paths]]
+# scope = ["php"]
+# # path = "snippets/php/php.json"
+# [[sources.paths]]
+# scope = ["php"]
+# path = "snippets/php/phpdoc.json"
+# [[sources.paths]]
+# scope = ["python"]
+# path = "snippets/python/python.json"

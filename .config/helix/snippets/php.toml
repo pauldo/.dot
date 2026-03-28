@@ -1,0 +1,95 @@
+[[snippets]]
+prefix = "vd"
+scope = ["php"]
+body = 'var_dump($1);exit;'
+description = "原生 PHP 打印并退出"
+
+[[snippets]]
+prefix = "dd"
+scope = ["php"]
+body = 'dd($1);'
+description = "Laravel/TP6+ 断点调试"
+
+[[snippets]]
+prefix = "ltry"
+scope = ["php"]
+body = '''
+try {
+    DB::beginTransaction();
+    $0
+    DB::commit();
+} catch (\Exception \$e) {
+    DB::rollBack();
+    Log::error(\$e->getMessage());
+}
+'''
+description = "Laravel 事务包裹"
+
+[[snippets]]
+prefix = "lrc"
+scope = ["php"]
+body = '''
+Route::${1:get}('${2:url}', [${3:Controller}::class, '${4:index}']);
+'''
+description = "Laravel 路由配置 (控制器模式)"
+
+[[snippets]]
+prefix = "lmodel"
+scope = ["php"]
+body = '''
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class ${1:ModelName} extends Model
+{
+    use HasFactory;
+
+    protected \$table = '${2:table_name}';
+    protected \$fillable = [$3];
+}
+'''
+description = "Laravel Model 初始化结构"
+
+[[snippets]]
+prefix = "tpselect"
+scope = ["php"]
+body = '''
+\$${1:list} = Db::name('${2:table}')
+    ->where('${3:status}', ${4:1})
+    ->order('${5:id}', 'desc')
+    ->select();
+'''
+description = "ThinkPHP 数据库链式查询"
+
+[[snippets]]
+prefix = "tpapi"
+scope = ["php"]
+body = '''
+return json([
+    'code' => ${1:200},
+    'msg'  => '${2:success}',
+    'data' => \$${3:data}
+]);
+'''
+description = "ThinkPHP 标准 JSON 返回"
+
+[[snippets]]
+prefix = "tpcont"
+scope = ["php"]
+body = '''
+namespace app\controller;
+
+use app\BaseController;
+use think\facade\Db;
+
+class ${1:Index} extends BaseController
+{
+    public function ${2:index}()
+    {
+        $0
+    }
+}
+'''
+description = "ThinkPHP 控制器基础结构"

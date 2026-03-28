@@ -1,11 +1,30 @@
 
 # https://github.com/helix-editor/helix/wiki/Language-Server-Configurations
+
 [language-server.rust-analyzer.config.check]
 command = "clippy"
+
+# https://github.com/estin/simple-completion-language-server
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.scls.config]
+feature_words = true
+feature_snippets = true
+snippets_first = true
+snippets_inline_by_word_tail = false
+feature_unicode_input = true
+feature_paths = true
+feature_citations = true
+
+[language-server.scls.environment]
+RUST_LOG = "info,simple-completion-language-server=info"
+LOG_FILE = "/tmp/completion.log"
 
 [[language]]
 name = "markdown"
 file-types = ["md", "markdown", "cheat"]
+language-servers = ["scls"]
 
 [[language]]
 name = "ini"
@@ -70,7 +89,7 @@ file-types = [
 name = "php"
 file-types = ["php"]
 indent = { tab-width = 4, unit = "    " }
-language-servers = ["intelephense", "tabby"]
+language-servers = ["scls", "intelephense"]
 
 [[language]]
 name = "tsx"
