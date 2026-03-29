@@ -1,6 +1,19 @@
 #!/bin/bash
 
 installessentials() {
+
+  echo "Installing essentials..."
+  if command -v apt >/dev/null 2>&1; then
+    sudo apt update
+    sudo apt install build-essential
+  elif command -v dnf >/dev/null 2>&1; then
+    sudo dnf update
+    sudo dnf groupinstall "Development Tools"
+  elif command -v yum >/dev/null 2>&1; then
+    sudo yum update
+    sudo yum groupinstall "Development Tools"
+  fi
+
   echo "Checking for Homebrew..."
   if ! command -v brew >/dev/null 2>&1; then
     echo "Installing Homebrew..."
