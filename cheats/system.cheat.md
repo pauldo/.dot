@@ -9,8 +9,13 @@ brew install shivammathur/php/php@7.4
 sudo timedatectl set-timezone Asia/Shanghai
 
 # install helix lsp
+; sudo npm install -g intelephense
 cargo install --features citation --git https://github.com/estin/simple-completion-language-server.git
-sudo npm install -g intelephense
+cd /tmp
+git clone https://github.com/AJenbo/phpantom_lsp.git
+cd phpantom_lsp
+cargo build --release
+cargo install --path .
 
 ; initialize .zshrc or .bashrc
 # init zsh or bash

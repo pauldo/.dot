@@ -8,6 +8,9 @@ command = "clippy"
 [language-server.scls]
 command = "simple-completion-language-server"
 
+[language-server.phpantom]
+command = "phpantom_lsp"
+
 [language-server.scls.config]
 feature_words = true
 feature_snippets = true
@@ -89,7 +92,7 @@ file-types = [
 name = "php"
 file-types = ["php"]
 indent = { tab-width = 4, unit = "    " }
-language-servers = ["scls", "intelephense"]
+language-servers = ["scls", "phpantom"]
 
 [[language]]
 name = "tsx"
