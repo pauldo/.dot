@@ -89,6 +89,11 @@ file-types = [
 ]
 
 [[language]]
+name = "sql"
+file-types = ["sql"]
+language-servers = ["scls"]
+
+[[language]]
 name = "php"
 file-types = ["php"]
 indent = { tab-width = 4, unit = "    " }

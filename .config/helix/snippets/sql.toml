@@ -1,0 +1,48 @@
+[[snippets]]
+prefix = "create table"
+scope = ["sql"]
+description = "Create Table (基础建表)"
+body = """
+CREATE TABLE ${1:table_name} (
+    ${2:id} SERIAL PRIMARY KEY,
+    ${3:column_name} ${4:varchar(255)},
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+"""
+
+[[snippets]]
+prefix = "alter table"
+scope = ["sql"]
+description = "Alter Table Add Column (增加字段)"
+body = "ALTER TABLE ${1:table_name} ADD COLUMN ${2:column_name} ${3:datatype};"
+
+[[snippets]]
+prefix = "add column"
+scope = ["sql"]
+description = "Add Column (添加字段)"
+body = "ALTER TABLE ${1:table_name} ADD ${2:column_name} ${3:type} AFTER ${4:existing_column};"
+
+[[snippets]]
+prefix = "modify column"
+scope = ["sql"]
+description = "Modify Column (修改字段类型/属性)"
+body = "ALTER TABLE ${1:table_name} MODIFY COLUMN ${2:column_name} ${3:new_type};"
+
+[[snippets]]
+prefix = "drop column"
+scope = ["sql"]
+description = "Drop Column (删除字段)"
+body = "ALTER TABLE ${1:table_name} DROP COLUMN ${2:column_name};"
+
+[[snippets]]
+prefix = "add index"
+scope = ["sql"]
+description = "Add Index (添加普通索引)"
+body = "CREATE INDEX idx_${2:column_name} ON ${1:table_name}(${2:column_name});"
+
+[[snippets]]
+prefix = "add unique"
+scope = ["sql"]
+description = "Add Unique (添加唯一约束)"
+body = "ALTER TABLE ${1:table_name} ADD UNIQUE (${2:column_name});"

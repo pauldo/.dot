@@ -34,3 +34,19 @@ if vim.g.neovide then
   vim.keymap.set("c", "<C-S-V>", "<C-R>+", { desc = "Paste from system clipboard" })
   vim.keymap.set("n", "<C-S-V>", '"+P', { desc = "Paste from system clipboard" })
 end
+
+local Terminal = require('toggleterm.terminal').Terminal
+local navi_term = Terminal:new({
+  cmd = "navi --print | navi --query 'alias :: clip' --best-match",
+  direction = "float",
+  close_on_exit = true,
+  on_close = function(term)
+    print("Press <p> to paste")
+  end,
+})
+
+function _navi_toggle()
+  navi_term:toggle()
+end
+
+vim.keymap.set("n", "<leader>nn", "<cmd>lua _navi_toggle()<CR>", {noremap = true, silent = true})
