@@ -25,8 +25,9 @@ space.B = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
   "add_newline_below",
   ":pipe sed -e 's/\t/    /g'",
 ]
-"H" = "goto_previous_buffer"
-"L" = "goto_next_buffer"
+H = "goto_previous_buffer"
+M = "goto_window_center"
+L = "goto_next_buffer"
 
 [keys.normal."ret"]
 w = ":w"
