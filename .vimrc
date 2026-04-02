@@ -1,30 +1,26 @@
-" --- 基础设置 ---
-let mapleader = " "            " 将 Leader 键设为空格 (LazyVim 的核心)
-set nocompatible               " 关闭 vi 兼容模式
-set number                     " 显示行号
-set termguicolors              " 开启真彩色支持
+let mapleader = " "
+set nocompatible
+set number
+set termguicolors
 set encoding=utf-8
-set mouse=                     " 开启鼠标支持
-set clipboard=unnamedplus      " 使用系统剪贴板 (需要 vim 支持 +clipboard)
+set mouse=
+set clipboard=unnamedplus
 
-" --- 缩进与排版 ---
-set expandtab                  " 将 Tab 转换为空格
-set tabstop=2                  " Tab 等于 2 个空格
-set shiftwidth=2               " 自动缩进也是 2 个空格
-set softtabstop=2
-set smartindent                " 智能缩进
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smartindent
 
-" --- 搜索设置 ---
-set ignorecase                 " 搜索忽略大小写
-set smartcase                  " 如果输入大写字母，则取消忽略大小写
-set hlsearch                   " 高亮搜索结果
-set incsearch                  " 边输入边跳转
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
 
 nnoremap <leader>ww <C-W>p
 nnoremap <leader>wd <C-W>c
 nnoremap <leader>w- <C-W>s
 nnoremap <leader>w\| <C-W>v
-" 快速切换窗口
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
@@ -37,14 +33,11 @@ nnoremap ]b :bnext<CR>
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>bb :buffers<CR>:buffer<Space>
 
-" 快速保存
 nnoremap <leader>fS :wa<CR>
 nnoremap <leader>fs :w<CR>
 
-" 取消搜索高亮 (类似 LazyVim 的 <leader>ur)
 nnoremap <leader>ur :nohlsearch<CR>
 
-" 像现代编辑器一样上下移动行
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -53,15 +46,74 @@ nnoremap gl $
 vnoremap gh ^
 vnoremap gl $
 
+" ctags
+nnoremap gd <C-]>
+nnoremap gB <C-t>
+nnoremap gv <C-w><C-]>
+set tags=./tags;,tags;
+nnoremap <C-]> g<C-]>
+nnoremap gd g<C-]>
+
 syntax on
 filetype plugin indent on
 
-" 尝试使用自带的配色方案
-colorscheme desert
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight EndOfBuffer guibg=NONE ctermbg=NONE
 
-" 高亮当前行
 set cursorline
 
-" 自定义状态栏 (模拟一点点 lualine 的感觉)
 set laststatus=2
 set statusline=%F\ %y\ %m%r%=%l/%L\ [%p%%]\ %{strftime('%H:%M')}
+
+nnoremap <leader>bs :call SaveCurrentBuffersSnapshot()<CR>
+
+function! SaveCurrentBuffersSnapshot()
+    let l:buffers = filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    let l:lines = map(l:buffers, 'expand("#" . v:val . ":p")')
+
+    if empty(l:lines)
+        return
+    endif
+
+    let l:dir = './.snapshots'
+
+    if !isdirectory(l:dir)
+        call mkdir(l:dir, "p")
+    endif
+
+    let l:filename = l:dir . '/.vim' . strftime('%Y%m%d%H%M%S') . '.txt'
+
+    call writefile(l:lines, l:filename)
+
+    echo "Snapshot saved: " . l:filename . " (" . len(l:lines) . " files)"
+endfunction
+
+nnoremap <leader>bl :call LoadSnapshotFromDir()<CR>
+
+function! LoadSnapshotFromDir()
+    let l:dir = './.snapshots'
+    if !isdirectory(l:dir)
+        return
+    endif
+
+    let l:files = globpath(l:dir, '.*.txt', 0, 1)
+    if empty(l:files)
+        return
+    endif
+
+    let l:menu = []
+    let l:i = 1
+    for f in l:files
+        call add(l:menu, l:i . ". " . fnamemodify(f, ":t"))
+        let l:i += 1
+    endfor
+
+    let l:choice = inputlist(["Select snapshot:"] + l:menu)
+
+    if l:choice > 0 && l:choice <= len(l:files)
+        let l:target_file = l:files[l:choice - 1]
+        execute 'args ' . join(readfile(l:target_file), ' ')
+        echo "\nSnapshot loaded: " . fnamemodify(l:target_file, ":t")
+    endif
+endfunction
