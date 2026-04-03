@@ -57,15 +57,17 @@ return {
       },
     },
     init = function()
+      vim.g.db_ui_env_variable_url = "DSN"
+      vim.g.db_ui_env_variable_name = "DSN_NAME"
       vim.g.db_ui_use_nerd_fonts = 1
       vim.g.db_ui_show_help = 0
       vim.g.db_ui_win_position = "right"
       vim.g.db_ui_disable_info_notifications = 1
       vim.g.db_ui_use_nvim_notify = 1
       vim.g.db_ui_drawer_sections = { "schemas", "new_query", "saved_queries", "buffers" }
-      vim.g.dbs = {
-        xd = vim.env.DB_URL_XD,
-      }
+      -- vim.g.dbs = {
+      --   xd = vim.env.DB_URL_TEST,
+      -- }
       vim.g.db_ui_table_helpers = {
         mysql = {
           ListDesc = "select * from {table} order by id desc limit 10;",
