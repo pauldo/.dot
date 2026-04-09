@@ -1,10 +1,10 @@
 % kvs
 
-# search nvalue n2
+# searchvalue sv
 echo "<getvalue>" | tr -d '\n' | navi --query "alias :: clip" --best-match
 
 # searchlink
-echo "<getlink>" | tr -d '\n' | navi --query "alias :: clip" --best-match
+echo "<getlink>" | tr -d '\n'
 
 $ appendsearch: echo $NAVI_KV_SEARCH
 $ query: echo "link|dsn|ip" | tr '|' '\n'

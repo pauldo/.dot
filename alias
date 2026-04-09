@@ -17,6 +17,11 @@ if command -v navi > /dev/null; then
   alias unsetproxy='navialias unsetproxy'
   alias searchlink='navikv "kvs searchlink"'
   alias sl='searchlink'
+  alias copylink='searchlink | clip'
+  alias cl='copylink'
   alias n='navi'
-  alias n2='navi --query "kvs n2" --best-match'
+  alias searchvalue='navi --query "kvs searchvalue" --best-match'
+  alias sv='searchvalue'
+  alias copyvalue='searchvalue | clip'
+  alias cv='copyvalue'
 fi
