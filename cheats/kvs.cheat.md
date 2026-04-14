@@ -1,7 +1,7 @@
 % kvs
 
 # searchvalue sv
-echo "<getvalue>" | tr -d '\n' | navi --query "alias :: clip" --best-match
+echo "<getvalue>" | tr -d '\n'
 
 # searchlink
 echo "<getlink>" | tr -d '\n'
