@@ -12,7 +12,7 @@ return {
       "DBUIFindBuffer",
     },
     keys = {
-      { "<localleader>d", "<cmd>DBUIToggle<cr>", desc = "Open DB Explorer", mode = { "n", "v" } },
+      { "<leader>db", "<cmd>DBUIToggle<cr>", desc = "Open DB Explorer", mode = { "n", "v" } },
       {
         "<c-r>",
         "<Plug>(DBUI_ExecuteQuery)",

@@ -53,3 +53,9 @@ opt.completeopt = "noinsert,noselect"
 opt.clipboard = "unnamedplus"
 
 vim.treesitter.language.register("xml", { "svg", "xslt" })
+
+vim.filetype.add({
+  extension = {
+    sql = "sql",
+  },
+})
