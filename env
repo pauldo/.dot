@@ -24,3 +24,9 @@ export NAVI_PATH="$HOME/.dot/cheats"
 # export JAVA_HOME=/opt/homebrew/opt/openjdk
 
 export UNAMEOUT="$(uname -s)"
+
+export JAVA_HOME="/home/linuxbrew/.linuxbrew/opt/openjdk/libexec"
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export ANDROID_NDK_HOME="$ANDROID_SDK_ROOT/ndk/30.0.14904198"
+export PATH="$JAVA_HOME/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"

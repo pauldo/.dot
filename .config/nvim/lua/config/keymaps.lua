@@ -35,7 +35,7 @@ if vim.g.neovide then
   vim.keymap.set("n", "<C-S-V>", '"+P', { desc = "Paste from system clipboard" })
 end
 
-local Terminal = require('toggleterm.terminal').Terminal
+local Terminal = require("toggleterm.terminal").Terminal
 local navi_term = Terminal:new({
   cmd = "navi --print | navi --query 'alias :: clip' --best-match",
   direction = "float",
@@ -49,4 +49,8 @@ function _navi_toggle()
   navi_term:toggle()
 end
 
-vim.keymap.set("n", "<leader>nn", "<cmd>lua _navi_toggle()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>nn", "<cmd>lua _navi_toggle()<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "gc", "M", { desc = "Goto screen center (Helix style)" })
+vim.keymap.set("n", "gt", "H", { desc = "Goto screen top (Helix style)" })
+vim.keymap.set("n", "gb", "L", { desc = "Goto screen bottom (Helix style)" })

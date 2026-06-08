@@ -39,7 +39,8 @@ command -v singbox >/dev/null 2>&1 || curl -fsSL https://sing-box.app/install.sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # s-ui
-command -v s-ui >/dev/null 2>&1 || bash <(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)
+; command -v s-ui >/dev/null 2>&1 || bash <(curl -Ls https://raw.githubusercontent.com/alireza0/s-ui/master/install.sh)
+command -v s-ui >/dev/null 2>&1 || bash <(curl -Ls https://raw.githubusercontent.com/admin8800/s-ui/main/install.sh)
 
 # chsrc
 command -v chsrc >/dev/null 2>&1 || curl https://chsrc.run/posix | bash
@@ -47,5 +48,5 @@ command -v chsrc >/dev/null 2>&1 || curl https://chsrc.run/posix | bash
 # x-cmd
 command -v x-cmd >/dev/null 2>&1 || curl -L https://get.x-cmd.com | bash
 
-# lightpanda
+# lightpanda install
 curl -L -o $HOME/.dot/bin/lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux && chmod a+x $HOME/.dot/bin/lightpanda
