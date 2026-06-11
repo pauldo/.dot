@@ -5,7 +5,13 @@ return {
       { "<localleader>r", "", desc = "+Rest", ft = "http" },
       { "<localleader>rb", "<cmd>lua require('kulala').scratchpad()<cr>", desc = "Open scratchpad", ft = "http" },
       { "<localleader>rc", "<cmd>lua require('kulala').copy()<cr>", desc = "Copy as cURL", ft = "http" },
-      { "<c-s>", "<esc><cmd>lua require('kulala').from_curl()<cr>", desc = "Paste from curl", ft = "http", mode = { "n", "i" } },
+      {
+        "<c-s>",
+        "<esc><cmd>lua require('kulala').from_curl()<cr>",
+        desc = "Paste from curl",
+        ft = "http",
+        mode = { "n", "i" },
+      },
       { "<c-d>", "&{{debug}}", desc = "Add debug string", ft = "http", mode = { "i" } },
       { "<c-t>", "&token={{token}}", desc = "Add token string", ft = "http", mode = { "i" } },
       {
@@ -28,10 +34,12 @@ return {
       { "<localleader>rS", "<cmd>lua require('kulala').show_stats()<cr>", desc = "Show stats", ft = "http" },
       { "<localleader>rt", "<cmd>lua require('kulala').toggle_view()<cr>", desc = "Toggle headers/body", ft = "http" },
     },
-    ft = {"http", "rest"},
-    opts = {},
+    ft = { "http", "rest" },
+    opts = {
+      variables_scope = "document",
+      lsp = {
+        formatter = false,
+      },
+    },
   },
-  {
-    "mistweaverco/kulala-fmt",
-  }
 }
