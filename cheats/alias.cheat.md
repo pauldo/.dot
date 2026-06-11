@@ -1,7 +1,7 @@
 % alias
 
 # :: setproxy
-export HTTPS_PROXY=http://<ip>:<port> HTTP_PROXY=http://<ip>:<port> ALL_PROXY=http://<ip>:<port>
+export HTTPS_PROXY=<protocol>://<ip>:<port> HTTP_PROXY=<protocol>://<ip>:<port> ALL_PROXY=<protocol>://<ip>:<port>
 
 # :: unsetproxy
 unset HTTPS_PROXY HTTP_PROXY ALL_PROXY
@@ -37,4 +37,5 @@ navi --print
 navi --print | navi --query "alias :: clip" --best-match
 
 $ ip: echo "127.0.0.1|" | tr '|' '\n'
-$ port: echo "7890|" | tr '|' '\n'
+$ port: echo "7890|1080|" | tr '|' '\n'
+$ protocol: echo "http|socks5|" | tr '|' '\n'
