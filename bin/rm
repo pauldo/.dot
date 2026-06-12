@@ -17,7 +17,5 @@ for item in "$@"; do
     basename=$(basename "$item")
     mv "$item" "$TRASH_DIR/${PREFIX}${basename}"
     echo "Moved to trash: ${PREFIX}${basename}"
-  else
-    echo "rm: cannot remove '$item': No such file or directory"
   fi
 done

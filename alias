@@ -1,5 +1,6 @@
 alias l='ls -al'
 alias sudo='sudo env "PATH=$PATH" '
+alias cleartrash='/bin/rm -rf ~/.trash/*'
 if command -v navi > /dev/null; then
   navikv() {
     export NAVI_KV_SEARCH=$2
