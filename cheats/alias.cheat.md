@@ -1,9 +1,9 @@
 % alias
 
-# :: setproxy
+# :env: setproxy
 export HTTPS_PROXY=<protocol>://<ip>:<port> HTTP_PROXY=<protocol>://<ip>:<port> ALL_PROXY=<protocol>://<ip>:<port>
 
-# :: unsetproxy
+# :env: unsetproxy
 unset HTTPS_PROXY HTTP_PROXY ALL_PROXY
 
 # :: tt
@@ -31,10 +31,10 @@ elif command -v xclip > /dev/null; then
 fi
 
 # :: np
-navi --print
+echo -n $(navi --query ":copy: " --print)
 
 # :: ncp
-navi --print | navi --query "alias :: clip" --best-match
+echo -n $(navi --query ":copy: " --print) | navi --query "alias :: clip" --best-match
 
 $ ip: echo "127.0.0.1|" | tr '|' '\n'
 $ port: echo "7890|1080|" | tr '|' '\n'

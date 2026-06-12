@@ -3,7 +3,7 @@ if command -v navi > /dev/null; then
     eval "$(navi widget zsh)"
 
     _navi_to_clipboard() {
-      local result=$(navi --print 2>/dev/null)
+      local result=$(navi --query ":copy: " --print 2>/dev/null)
       if [ -n "$result" ]; then
         echo -n "$result" | clip
         zle -M "Copied: $result"
@@ -13,6 +13,23 @@ if command -v navi > /dev/null; then
     # Alt+c
     zle -N _navi_to_clipboard
     bindkey '\ec' _navi_to_clipboard
+
+    _navi_smart_execute() {
+      local result=$(navi --query ":env: " --print 2>/dev/null)
+      if [ -n "$result" ]; then
+        # if [[ "$result" =~ "^export " ]]; then
+          eval "$result"
+          zle -M "Executed: $result"
+        # else
+        #   LBUFFER="$LBUFFER$result"
+        # fi
+      fi
+      zle reset-prompt
+    }
+
+    # Alt+e
+    zle -N _navi_smart_execute
+    bindkey '\ee' _navi_smart_execute
 
     bindkey -r '^g'
     # Alt+s

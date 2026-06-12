@@ -1,10 +1,10 @@
 % kvs
 
-# searchvalue sv
-echo "<getvalue>" | tr -d '\n'
+# :copy: searchvalue sv
+<getvalue>
 
-# searchlink
-echo "<getlink>" | tr -d '\n'
+# :copy: searchlink
+<getlink>
 
 $ appendsearch: echo $NAVI_KV_SEARCH
 $ query: echo "link|dsn|ip" | tr '|' '\n'
