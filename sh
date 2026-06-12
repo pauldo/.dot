@@ -17,12 +17,12 @@ if command -v navi > /dev/null; then
     _navi_smart_execute() {
       local result=$(navi --query ":env: " --print 2>/dev/null)
       if [ -n "$result" ]; then
-        # if [[ "$result" =~ "^export " ]]; then
+        if [[ "$result" =~ "^echo " ]]; then
+          LBUFFER="$LBUFFER$result"
+        else
           eval "$result"
           zle -M "Executed: $result"
-        # else
-        #   LBUFFER="$LBUFFER$result"
-        # fi
+        fi
       fi
       zle reset-prompt
     }
