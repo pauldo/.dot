@@ -12,6 +12,7 @@ vim.g.lazyvim_python_ruff = "ruff"
 vim.g.transparency = 0.75
 if vim.g.neovide then
   vim.env.PATH = vim.env.PATH .. ":/usr/local/bin:/opt/homebrew/bin:/home/linuxbrew/.linuxbrew/bin"
+  vim.env.NAVI_PATH = "$HOME/..dot/cheats:$NAVI_PATH"
   vim.g.neovide_opacity = 0.75
   vim.g.neovide_normal_opacity = 0.75
   vim.g.neovide_cursor_vfx_mode = "railgun"

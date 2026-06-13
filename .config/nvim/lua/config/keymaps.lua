@@ -37,7 +37,7 @@ end
 
 local Terminal = require("toggleterm.terminal").Terminal
 local navi_term = Terminal:new({
-  cmd = "navi --query ':copy: ' --print | navi --query 'alias :: clip' --best-match",
+  cmd = "navi --query ':copy: ' --print | clip",
   direction = "float",
   close_on_exit = true,
   on_close = function(term)
@@ -49,7 +49,7 @@ function _navi_toggle()
   navi_term:toggle()
 end
 
-vim.keymap.set("n", "<leader>nn", "<cmd>lua _navi_toggle()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>N", "<cmd>lua _navi_toggle()<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "gc", "M", { desc = "Goto screen center (Helix style)" })
 vim.keymap.set("n", "gt", "H", { desc = "Goto screen top (Helix style)" })
