@@ -37,7 +37,7 @@ end
 
 local Terminal = require("toggleterm.terminal").Terminal
 local navi_term = Terminal:new({
-  cmd = "navi --print | navi --query 'alias :: clip' --best-match",
+  cmd = "navi --query ':copy: ' --print | navi --query 'alias :: clip' --best-match",
   direction = "float",
   close_on_exit = true,
   on_close = function(term)

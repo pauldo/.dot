@@ -7,7 +7,7 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_python_ruff = "ruff"
 
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
 
 vim.g.transparency = 0.75
 if vim.g.neovide then
