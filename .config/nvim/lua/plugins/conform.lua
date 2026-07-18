@@ -13,8 +13,7 @@ return {
           lua = { "stylua" },
           fish = { "fish_indent" },
           sh = { "shfmt" },
-          -- http = { "kulala" },
-          -- rest = { "kulala" },
+          http = { "kulala-fmt" },
         },
       }
       return opts

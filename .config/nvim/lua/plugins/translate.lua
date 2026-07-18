@@ -12,8 +12,8 @@ return {
       },
     },
     keys = {
-      { "<leader>ts", "y<cmd>Pantran<cr>p", mode = { "n", "x" }, desc = "Pantran 翻译" },
-      { "<leader>tt", "yy<cmd>Pantran<cr>p", mode = "n", remap = true, desc = "翻译当前行" },
+      { "<leader>ts", "y<cmd>Pantran<cr>p", mode = { "n", "x" }, desc = "Translate Selection" },
+      { "<leader>tt", "yy<cmd>Pantran<cr>p", mode = "n", remap = true, desc = "Translate Current Line" },
     },
   },
 }

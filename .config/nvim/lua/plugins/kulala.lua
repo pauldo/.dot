@@ -15,7 +15,9 @@ return {
     },
     ft = { "http", "rest" },
     opts = {
-      variables_scope = "document",
+      ui = {
+        max_response_size = 1024 * 1024,
+      },
     },
   },
 }
