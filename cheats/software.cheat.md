@@ -20,6 +20,9 @@ lightpanda fetch --obey_robots --log_format pretty --log_level info https://
 
 % install
 
+# tailscale
+command -v tailscale >/dev/null 2>&1 || curl -fsSL https://tailscale.com/install.sh | sh
+
 # claude
 command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash
 
