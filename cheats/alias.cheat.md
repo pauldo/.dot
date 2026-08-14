@@ -37,5 +37,5 @@ echo -n $(navi --query ":copy: " --print)
 echo -n $(navi --query ":copy: " --print) | navi --query "alias :: clip" --best-match
 
 $ ip: echo "127.0.0.1|" | tr '|' '\n'
-$ port: echo "7890|1080|" | tr '|' '\n'
+$ port: echo "7890|2080|" | tr '|' '\n'
 $ protocol: echo "http|socks5|" | tr '|' '\n'
