@@ -18,6 +18,12 @@ bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionChec
 # lightpanda
 lightpanda fetch --obey_robots --log_format pretty --log_level info https://
 
+# aes openssl encrypt
+openssl enc -aes-256-cbc -a -salt -pbkdf2
+
+# tr
+tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
 % install
 
 # tailscale
